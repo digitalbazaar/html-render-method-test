@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <script type="module">
+      import {render} from './render.js';
+
+      document.addEventListener('DOMContentLoaded', async event => {
+        const credential = {
+          '@context': [
+            'https://www.w3.org/ns/credentials/v2',
+            'https://www.w3.org/ns/credentials/examples/v2'
+          ],
+          type: ['VerifiableCredential', 'NameCredential'],
+          credentialSubject: {
+            name: 'Example Name',
+            notRendered: 'should not appear'
+          }
+        };
+        const {iframe} = await render({
+          credential,
+          renderProperty: ['/credentialSubject/name'],
+          template: `
+            <div>
+              <script>
+                console.log('running template render script');
+                const credential = JSON.parse(document.querySelector(
+                  'head > script[name="credential"]').innerHTML);
+                document.querySelector('#content').innerHTML =
+                  JSON.stringify(credential, null, 2);
+              <\/script>
+              <div>
+                <pre id="content"></pre>
+              </div>
+            </div>
+          `
+        });
+        iframe.style.width = '800px';
+        iframe.style.height = '800px';
+        document.querySelector('#display').appendChild(iframe);
+      });
+    </script>
+  </head>
+  <body>
+    <div>HTML Render Method Test</div>
+    <div id="display"></div>
+  </body>
+</html>
