@@ -43,20 +43,19 @@
         const renderMethod = credential.renderMethod;
         // FIXME: dereference template from `renderMethod.id`
         const template = `
+          <div>
+            <script>
+              console.log('running template render script');
+              const credential = JSON.parse(document.querySelector(
+                'head > script[name="credential"]').innerHTML);
+              document.querySelector('#content').innerHTML =
+                JSON.stringify(credential, null, 2);
+              window.renderMethodReady();
+            <\/script>
             <div>
-              <script>
-                console.log('running template render script');
-                const credential = JSON.parse(document.querySelector(
-                  'head > script[name="credential"]').innerHTML);
-                document.querySelector('#content').innerHTML =
-                  JSON.stringify(credential, null, 2);
-                window.renderMethodReady();
-              <\/script>
-              <div>
-                <pre id="content"></pre>
-              </div>
+              <pre id="content"></pre>
             </div>
-          `;
+          </div>`;
         const {iframe} = await render({
           credential,
           renderProperty: renderMethod.renderProperty,
