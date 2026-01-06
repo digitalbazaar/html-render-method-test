@@ -18,6 +18,9 @@
         const {iframe} = await render({
           credential,
           renderProperty: ['/credentialSubject/name'],
+          renderMethodReady() {
+            console.log('rendering ready');
+          },
           template: `
             <div>
               <script>
@@ -26,6 +29,7 @@
                   'head > script[name="credential"]').innerHTML);
                 document.querySelector('#content').innerHTML =
                   JSON.stringify(credential, null, 2);
+                window.renderMethodReady();
               <\/script>
               <div>
                 <pre id="content"></pre>
