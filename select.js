@@ -15,7 +15,7 @@ export function selectJsonLd({document, pointers, includeTypes = true} = {}) {
     throw new TypeError('"pointers" must be an array.');
   }
   if(pointers.length === 0) {
-    // no pointers, so no frame
+    // no pointers, so nothing selected
     return null;
   }
 
