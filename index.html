@@ -169,8 +169,6 @@ SPDX-License-Identifier: BSD-3-Clause
               const credential = JSON.parse(document.querySelector(
                 'head > script[name="credential"]').innerHTML);
               const contentDiv = document.querySelector('#content');
-              console.log('contentDiv el', contentDiv);
-
               const credentialAsString = JSON.stringify(credential, null, 2);
               contentDiv.innerHTML = credentialAsString;
               contentDiv.style.width = '100%';
