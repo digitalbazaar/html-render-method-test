@@ -3,6 +3,9 @@
     <meta http-equiv="content-security-policy" content="frame-src 'none'">
   </head>
   <body>
+    <h1>Host Page</h1>
+
+    <h2>Credential Display</h2>
     <iframe id="renderer" sandbox="allow-scripts allow-modals" srcdoc=""></iframe>
 
     <script>
@@ -25,6 +28,11 @@
       // template value extracted from the original VC
       const template = `
         <div>
+          <style>
+            body { font-family: Arial, sans-serif; }
+            h1 { color: darkblue; }
+          </style>
+
           <h1 id="credentialSubject-name"></h1>
           <p>Issued by: <span id="issuer-name"></span></p>
 
