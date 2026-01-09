@@ -49,7 +49,7 @@
       renderer.srcdoc = `
         <html>
         <head>
-          <meta http-equiv="content-security-policy" content="connect-src 'none'">
+          <meta http-equiv="content-security-policy" content="default-src 'none' data: 'unsafe-inline'">
           <script name="credential" type="application/vc">${JSON.stringify(credential)}<\/script>
         </head>
         <body>${template}</body>
