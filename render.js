@@ -25,7 +25,7 @@ export async function render({credential, renderProperty, template} = {}) {
   // create iframe for sandboxed rendering
   const iframe = document.createElement('iframe');
   // permissions TBD
-  iframe.sandbox = 'allow-scripts allow-modals';
+  iframe.sandbox = 'allow-scripts';
   // block all network access in browsers that support `iframe.csp`; other
   // browsers will use the meta tag in the iframe HTML which does not appear
   // to be changeable by JavaScript once set (prevents change of the policy
